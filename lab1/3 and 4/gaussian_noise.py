@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('labka.jpg')
+img = cv2.imread('../labka.jpg')
 
 gauss = np.zeros(img.shape, np.uint8)
 mean = (0, 0, 0)

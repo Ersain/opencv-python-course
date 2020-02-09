@@ -3,7 +3,7 @@ import random
 import cv2
 import numpy as np
 
-img = cv2.imread('labka.jpg')
+img = cv2.imread('../labka.jpg')
 
 result = np.zeros(img.shape, np.uint8)
 prob = 0.2
