@@ -3,29 +3,26 @@ import random
 import cv2
 import numpy as np
 
+img = cv2.imread('labka.jpg')
 
-def salt_n_pepper(image, prob):
-    result = np.zeros(image.shape, np.uint8)
-    thres = 1 - prob
-    for i in range(image.shape[0]):
-        for j in range(image.shape[1]):
-            rdn = random.random()
-            if rdn < prob:
-                result[i][j] = 0
-            elif rdn > thres:
-                result[i][j] = 255
-            else:
-                result[i][j] = image[i][j]
-    return result
+result = np.zeros(img.shape, np.uint8)
+prob = 0.05
+edge = 1 - prob
 
-
-img = cv2.imread('labka.jpg', 0)
-noise_img = salt_n_pepper(img, 0.05)
+for i in range(img.shape[0]):
+    for j in range(img.shape[1]):
+        rdn = random.random()
+        if rdn < prob:
+            result[i][j] = 0
+        elif rdn > edge:
+            result[i][j] = 255
+        else:
+            result[i][j] = img[i][j]
 
 cv2.imshow('original', img)
-cv2.imshow('salt and pepper noise', noise_img)
+cv2.imshow('salt and pepper noise', result)
 
-cv2.randu()
+cv2.imwrite('salt_n_pepper.jpg', result)
 
 k = cv2.waitKey(0) & 0xFF
 
