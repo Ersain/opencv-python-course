@@ -6,7 +6,7 @@ import numpy as np
 img = cv2.imread('labka.jpg')
 
 result = np.zeros(img.shape, np.uint8)
-prob = 0.05
+prob = 0.2
 edge = 1 - prob
 
 for i in range(img.shape[0]):

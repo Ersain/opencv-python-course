@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread('labka.jpg')
+img = cv2.imread('../labka.jpg')
 
 yuv = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
 hls = cv2.cvtColor(img, cv2.COLOR_BGR2HLS)
