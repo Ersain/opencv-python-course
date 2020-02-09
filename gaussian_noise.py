@@ -9,6 +9,7 @@ sigma = (50, 50, 50)
 cv2.randn(gauss, mean, sigma)
 
 modified_img = cv2.add(img, gauss)
+cv2.imwrite('gaussian_noise.jpg', modified_img)
 
 cv2.imshow('original', img)
 cv2.imshow('gaussian noise', modified_img)
