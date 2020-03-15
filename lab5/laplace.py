@@ -2,7 +2,7 @@ import cv2 as cv
 
 d_depth = cv.CV_16S
 kernel_size = 3
-window_name = "Laplace Demo"
+window_name = 'Laplace Demo'
 image_name = 'TrinityBikes.jpg'
 
 src = cv.imread(cv.samples.findFile(image_name))

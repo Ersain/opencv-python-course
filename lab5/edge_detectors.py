@@ -1,24 +1,16 @@
-import matplotlib.pyplot as plt
+import cv2
 
-from skimage import filters
-from skimage.data import camera
+img = cv2.imread('TrinityBikes.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+img_gaussian = cv2.GaussianBlur(gray, (3, 3), 0)
+img_sobelx = cv2.Sobel(img_gaussian, cv2.CV_8U, 1, 0, ksize=5)
+img_sobely = cv2.Sobel(img_gaussian, cv2.CV_8U, 0, 1, ksize=5)
+img_sobel = img_sobelx + img_sobely
 
-image = camera()
-edge_roberts = filters.roberts(image)
-edge_sobel = filters.sobel(image)
+cv2.imshow("Sobel X", img_sobelx)
+cv2.imshow("Sobel Y", img_sobely)
+cv2.imshow("Sobel", img_sobel)
+k = cv2.waitKey(0) & 0xFF
 
-fig, axes = plt.subplots(
-    ncols=2, sharex=True, sharey=True, figsize=(8, 4)
-)
-
-axes[0].imshow(edge_roberts, cmap=plt.cm.gray)
-axes[0].set_title('Roberts Edge Detection')
-
-axes[1].imshow(edge_sobel, cmap=plt.cm.gray)
-axes[1].set_title('Sobel Edge Detection')
-
-for ax in axes:
-    ax.axis('off')
-
-plt.tight_layout()
-plt.show()
+if k == '27':
+    cv2.destroyAllWindows()
