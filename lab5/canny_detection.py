@@ -1,11 +1,11 @@
-import cv2 as cv
+import cv2
 
-img = cv.imread('TrinityBikes.jpg', 0)
-edges = cv.Canny(img, 100, 200)
+img = cv2.imread('TrinityBikes.jpg', 0)
+edges = cv2.Canny(img, 100, 200)
 
-cv.imshow('original', edges)
+cv2.imshow('original', edges)
 
-k = cv.waitKey(0) & 0xFF
+k = cv2.waitKey(0) & 0xFF
 
 if k == '27':
-    cv.destroyAllWindows()
+    cv2.destroyAllWindows()
